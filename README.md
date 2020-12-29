@@ -36,3 +36,9 @@ when you are in fedora and cgroup error happends:
 > sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
 
 mongo server in docker
+
+## deploy in microk8s
+- generate docker image (as indicated in src/main/docker/Dockerfile.jvm)
+	- >docker build -f src/main/docker/Dockerfile.jvm -t localhost:32000/quarkus:dev .
+- tag localhost:32000 and push to microk8s registry (remember, localhost:32000)
+- kubectl apply -f target/kubernetes/kubernetes.yml (before, change the image name)
